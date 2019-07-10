@@ -7,7 +7,7 @@
 ## 2. Actividades previas al laboratorio ##
 
 Asignadas en la práctica anterior.
-Leer el capítulo 5 del libro guía (link).
+Leer el capítulo 5 del libro guía y comprender las diapositivas de clase asociadas a este capitulo.
 
 ## 3. Actividades en el laboratorio ##
 
