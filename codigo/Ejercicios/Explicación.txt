@@ -1,0 +1,57 @@
+- Escriba un programa que llame un fork(). Antes del llamado del fork(), declare una variable de acceso (por ejemplo, x) y asígnele un valor (por ejemplo, 100). Responda las siguientes preguntas:
+¿Cuál es el valor de la variable en el proceso hijo?
+R/: El valor será el mismo que tenia esta variable antes de llamar el fork()
+¿Qué sucede con la variable cuando el proceso hijo y el padre cambian el valor de x?
+R/: Al hacer el llamado fork() se vuelven procesos independientes por lo cual cada uno podra modificar esta variable a su antojo sin repercutir en el valor del otro proceso.
+- Escriba un programa que abra un archivo (con la llamada open()) y entonces llame a fork(). Nota: El siguiente enlace puede ser de utilidad para entender la llamada open().
+¿Pueden el padre y el hijo acceder al file descriptor retornado por open()?
+R/: Si, ambos pueden acceder a este ya que al hacer fork() el sistema operativo los trata como procesos independientes que tienen los mismos datos que traia el proceso antes del fork()
+¿Qué pasa si ellos empiezan a escribir el archivo de manera concurrente, es decir, a la misma vez?
+R/: Ambos podran escribir en el archivo sin ningun problema, al ser cadenas de caracteres cortos se puede visualizar que uno escribe despues del otro, si por el contrario fueran cadenas muy largas, por los cambios de contexto comenzarian a escribir los mensajes de manera incompleta al ser retirados del uso de la cpu.
+- Escriba un programa usando fork(). El proceso hijo imprimirá "Hello"; el proceso padre imprimirá "goodbye". Usted deberá asegurar que el proceso hijo imprima en primer lugar; 
+¿usted podría hacer esto sin llamar wait() en el padre?
+R/: Si, usando la funcion sleep() podemos hacer que el proceso padre "Duerma" durante un tiempo lo suficientemente amplio como para que el sistema operativo le brinde el uso de la CPU al hijo antes que al padre.
+- Escriba un programa que llame fork() y entonces llame alguna forma de exec() para correr el programa /bin/ls. Intente probar todas las variaciones de la familia de funciones exec() incluyendo (en linux) execl(), execle(), execlp(), execv(), execvp() y execvpe(). 
+¿Por qué piensa usted que existen tantas variaciones para la misma llamada básica?
+R/:
+- Escriba ahora un programa que use wait() para esperar que el proceso hijo finalice su ejecución. 
+¿Cuál es el valor de retorno de la función wait()?, 
+R/: wait() retornara como valor el PID del proceso hijo esperado a terminar ó -1 si por el contrario no hay hijos a los que esperar su ejecución.
+¿Qué pasa si usted usa la función wait en el hijo?
+R/: Como esta funcion espera a que un hijo termine, no afectara la ejecucion del hijo y este seguira con sus respectivas instrucciones
+- Haga un programa, como el del ejercicio anterior, con una breve modificación, la cual consiste en usar waitpid() en lugar de wait(). 
+¿Cuándo podría ser waitpid() útil?
+R/: Esto podria ser util cuando se tienen 2 o más hijos y se conoce previamente a cual de ellos se desea esperar que termine su ejeción antes de continuar con la ejecución del padre.
+- Escriba un programa que cree un proceso hijo y entonces en el proceso hijo cierre la salida estandar (STDOUT FILENO). 
+¿Qué pasa si el hijo llama printf() para imprimir alguna salida después de cerrar el descriptor?
+R/: Este no podra escribir, su mensaje de printf no será visible.
+- Escriba un programa que cree dos hijos y conecte la salida estándar de un hijo a la entrada estándar del otro usando la llamada a sistema pipe()
+R/:- Escriba un programa que llame un fork(). Antes del llamado del fork(), declare una variable de acceso (por ejemplo, x) y asígnele un valor (por ejemplo, 100). Responda las siguientes preguntas:
+¿Cuál es el valor de la variable en el proceso hijo?
+R/: El valor será el mismo que tenia esta variable antes de llamar el fork()
+¿Qué sucede con la variable cuando el proceso hijo y el padre cambian el valor de x?
+R/: Al hacer el llamado fork() se vuelven procesos independientes por lo cual cada uno podra modificar esta variable a su antojo sin repercutir en el valor del otro proceso.
+- Escriba un programa que abra un archivo (con la llamada open()) y entonces llame a fork(). Nota: El siguiente enlace puede ser de utilidad para entender la llamada open().
+¿Pueden el padre y el hijo acceder al file descriptor retornado por open()?
+R/: Si, ambos pueden acceder a este ya que al hacer fork() el sistema operativo los trata como procesos independientes que tienen los mismos datos que traia el proceso antes del fork()
+¿Qué pasa si ellos empiezan a escribir el archivo de manera concurrente, es decir, a la misma vez?
+R/: Ambos podran escribir en el archivo sin ningun problema, al ser cadenas de caracteres cortos se puede visualizar que uno escribe despues del otro, si por el contrario fueran cadenas muy largas, por los cambios de contexto comenzarian a escribir los mensajes de manera incompleta al ser retirados del uso de la cpu.
+- Escriba un programa usando fork(). El proceso hijo imprimirá "Hello"; el proceso padre imprimirá "goodbye". Usted deberá asegurar que el proceso hijo imprima en primer lugar; 
+¿usted podría hacer esto sin llamar wait() en el padre?
+R/: Si, usando la funcion sleep() podemos hacer que el proceso padre "Duerma" durante un tiempo lo suficientemente amplio como para que el sistema operativo le brinde el uso de la CPU al hijo antes que al padre.
+- Escriba un programa que llame fork() y entonces llame alguna forma de exec() para correr el programa /bin/ls. Intente probar todas las variaciones de la familia de funciones exec() incluyendo (en linux) execl(), execle(), execlp(), execv(), execvp() y execvpe(). 
+¿Por qué piensa usted que existen tantas variaciones para la misma llamada básica?
+R/:Como si fuese un método sobrecargado en otro lenguaje, este permite ejecutar la misma función con diferentes parámetros, para diferentes usos
+- Escriba ahora un programa que use wait() para esperar que el proceso hijo finalice su ejecución. 
+¿Cuál es el valor de retorno de la función wait()?, 
+R/: wait() retornara como valor el PID del proceso hijo esperado a terminar ó -1 si por el contrario no hay hijos a los que esperar su ejecución.
+¿Qué pasa si usted usa la función wait en el hijo?
+R/: Como esta funcion espera a que un hijo termine, no afectara la ejecucion del hijo y este seguira con sus respectivas instrucciones
+- Haga un programa, como el del ejercicio anterior, con una breve modificación, la cual consiste en usar waitpid() en lugar de wait(). 
+¿Cuándo podría ser waitpid() útil?
+R/: Esto podria ser util cuando se tienen 2 o más hijos y se conoce previamente a cual de ellos se desea esperar que termine su ejeción antes de continuar con la ejecución del padre.
+- Escriba un programa que cree un proceso hijo y entonces en el proceso hijo cierre la salida estandar (STDOUT FILENO). 
+¿Qué pasa si el hijo llama printf() para imprimir alguna salida después de cerrar el descriptor?
+R/: Este no podra escribir, su mensaje de printf no será visible.
+- Escriba un programa que cree dos hijos y conecte la salida estándar de un hijo a la entrada estándar del otro usando la llamada a sistema pipe()
+R/:
