@@ -13,7 +13,7 @@ R/: Ambos podran escribir en el archivo sin ningun problema, al ser cadenas de c
 R/: Si, usando la funcion sleep() podemos hacer que el proceso padre "Duerma" durante un tiempo lo suficientemente amplio como para que el sistema operativo le brinde el uso de la CPU al hijo antes que al padre.
 - Escriba un programa que llame fork() y entonces llame alguna forma de exec() para correr el programa /bin/ls. Intente probar todas las variaciones de la familia de funciones exec() incluyendo (en linux) execl(), execle(), execlp(), execv(), execvp() y execvpe(). 
 ¿Por qué piensa usted que existen tantas variaciones para la misma llamada básica?
-R/:
+R/:Porque como si fuese un método sobrecargado, este sirve para ejecutar la misma función con argumentos diferentes para ejecutar diferentes aciones según se necesite.
 - Escriba ahora un programa que use wait() para esperar que el proceso hijo finalice su ejecución. 
 ¿Cuál es el valor de retorno de la función wait()?, 
 R/: wait() retornara como valor el PID del proceso hijo esperado a terminar ó -1 si por el contrario no hay hijos a los que esperar su ejecución.
